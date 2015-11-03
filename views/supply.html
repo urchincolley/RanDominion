@@ -1,0 +1,24 @@
+<div ng-if="supply.cards.length">
+  <div class="hint-text">
+    (Click a supply card to replace it if possible, or click an event to redraw all events)
+  </div>
+  <div class="main-supply">
+    <div class="top-row">
+      <img class="card-img" ng-repeat="card in supply.cards" ng-if="$index < 5" ng-click="replace_card(card)" ng-src="{{card.image}}" />
+    </div>
+    <div class="bottom-row">
+      <img class="card-img" ng-repeat="card in supply.cards" ng-if="$index > 4" ng-click="replace_card(card)" ng-src="{{card.image}}" />
+    </div>
+  </div>
+  <div class="extra-supply" ng-if="supply.bane || supply.events">
+    <div class="bane-section" ng-if="supply.bane">
+      <div class="section-header">Bane</div>
+      <img class="bane-img" ng-src="{{supply.bane.image}}" ng-click="replace_bane()" />
+    </div>
+    <div class="events-section" ng-if="!!supply.events" ng-show="supply.events && options.useEvents && (options.sets | inArray : 'Adventures')">
+      <div class="section-header events-header">Events</div>
+      <div class="no-events" ng-if="!supply.events.length" ng-click="draw_events()">No Events</div>
+      <img class="event-img" ng-repeat="event in supply.events | orderBy:'cost'" ng-click="draw_events()" ng-src="{{event.image}}" />
+    </div>
+  </div>
+</div>

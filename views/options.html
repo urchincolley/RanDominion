@@ -1,0 +1,58 @@
+<div class="options">
+  <div class="subhead">Sort by:</div>
+  <div class="checkbox-line">
+    <label>
+      <input type="radio" ng-model="supply.sortBy" value="cost" ng-click="sort_supply('cost')">
+      Cost
+    </label>
+    <label>
+      <input id="sort-by-set" type="radio" ng-model="supply.sortBy" value="set" ng-click="sort_supply('set')">
+      Set
+    </label>
+  </div>
+
+  <div class="subhead">Sets to choose from:</div>
+
+  <div class="set-list">
+    <div class="set-selector" ng-repeat="set in sets">
+      <input type="checkbox" id="{{set}}" checklist-model="options.sets" checklist-value="set" ng-click="options.change()">
+      <label for="{{set}}">{{set}}</label>
+    </div>
+  </div>
+
+  <div class="subhead">Additional options:</div>
+
+  <div class="checkbox-line">
+    <input id="exclude-attacks" type="checkbox" ng-model="options.excludeAttacks" ng-click="options.change()">
+    <label class="long-label" for="exclude-attacks">Exclude attacks</label>
+
+    <input id="exclude-curses" type="checkbox" ng-model="options.excludeCurses" ng-click="options.change()">
+    <label class="long-label" for="exclude-curses">Exclude cards that use curses</label>
+
+    <input id="exclude-ruins" type="checkbox" ng-model="options.excludeLooters" ng-click="options.change()" ng-disabled="options.sets | notInArray : 'Dark Ages'">
+    <label class="long-label" for="exclude-ruins">Exclude cards that use ruins</label>
+  </div>
+
+  <div class="checkbox-line">
+    <input id="require-fork" type="checkbox" ng-model="options.requireFork" ng-click="options.change()">
+    <label class="long-label" for="require-fork">Require at least one action fork</label>
+
+    <input id="require-buys" type="checkbox" ng-model="options.requireBuys" ng-click="options.change()">
+    <label class="long-label" for="require-buys">Require at least one card that adds buys</label>
+
+    <input id="use-events" type="checkbox" ng-model="options.useEvents" ng-disabled="options.sets | notInArray : 'Adventures'">
+    <label class="long-label" for="use-events">Use Events</label>
+  </div> 
+
+  <div class="checkbox-line">
+    <input id="exclude-reactions" type="checkbox" ng-model="options.excludeReactions" ng-click="options.change()">
+    <label class="long-label" for="exclude-reactions">Exclude reactions without attacks</label>
+
+    <input id="require-reactions" type="checkbox" ng-model="options.requireReactions" ng-click="options.change()" ng-disabled="options.excludeAttacks">
+    <label class="long-label" for="require-reactions">Require reactions with attacks</label>
+  </div>
+</div>
+
+<div class="button-line">
+  <button class="go-btn" ng-click="get_supply()">Generate Supply</button>
+</div>

@@ -1,0 +1,11 @@
+<div class="msg-container">
+  <div class="initial-msg" ng-if="!supply.cards.length">
+    Select some options and click Generate Supply!
+  </div>
+  <div class="warning-line" ng-show="!supply.currentlyValid">
+    This supply does not match the rules you have currently selected.
+  </div>
+  <div class="warning-line" ng-show="options.overconstrained">
+    There is no supply that fits all of the rules you have currently selected.
+  </div>
+</div>
