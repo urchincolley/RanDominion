@@ -1,6 +1,5 @@
 # RanDominion
-Angularjs Dominion Randomizer
-All design and code (except external libs) copyright Urchin Colley 2015
+Angularjs Dominion Randomizer (2015)
 
 This is a web application that randomizes sets of supply cards for the Dominion
 card game (check out http://dominionstrategy.com/ for more about the game). To use
